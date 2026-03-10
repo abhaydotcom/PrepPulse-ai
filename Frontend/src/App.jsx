@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
 import Home from "./pages/Home";
-import Login from "./pages/login";
-import Signup from "./pages/Signup";
+
+import AuthPage from "./pages/AuthPage";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) return <div className="loading-screen"><div className="spinner" /></div>;
-  return user ? children : <Navigate to="/login" replace />;
+  return user ? children : <Navigate to="/auth" replace />;
 };
 
 const PublicRoute = ({ children }) => {
@@ -20,8 +20,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-      <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-      <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
+      <Route path="/auth" element={<PublicRoute><AuthPage /></PublicRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
