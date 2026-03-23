@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useInterview } from "../hooks/useInterview"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
  const Navbar = ({ user, onLogout , interviewId}) => {
     const [open, setOpen] = useState(false)
     const dropdownRef = useRef()
     const {  getResumePdf } = useInterview()
+      const location = useLocation();
     const navigate=useNavigate();
     useEffect(() => {
         const handler = (e) => {
@@ -34,13 +35,13 @@ import { useNavigate } from "react-router-dom"
 
                  <div className="flex gap-4">
 
-                    <button 
+                   {location.pathname === `/interview/${interviewId}` &&( <button 
                     onClick={() =>  getResumePdf(interviewId)}
                     className="hidden md:flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg text-[12px] font-bold hover:bg-zinc-200 transition-colors cursor-pointer border-none"
                 >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                     Resume PDF
-                </button>
+                </button>)}
 
                  <div className='relative' ref={dropdownRef}>
                     <button
@@ -64,7 +65,6 @@ import { useNavigate } from "react-router-dom"
                         </svg>
                     </button>
 
-                    {/* Dropdown */}
                     {open && (
                         <div className='absolute right-0 mt-2 w-52'>
                             <div className='bg-slate-900 border border-white/10 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden'>
