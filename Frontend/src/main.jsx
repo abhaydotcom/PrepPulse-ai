@@ -4,11 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from './context/authContext.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import { InterviewProvider } from './context/interviewContext.jsx'
 
 createRoot(document.getElementById('root')).render(
    <BrowserRouter>
     <AuthProvider>
-      <App />
+      <InterviewProvider>
+         <App />
+      </InterviewProvider>
+     
     </AuthProvider>
   </BrowserRouter>
 )

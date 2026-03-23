@@ -31,7 +31,7 @@ const AuthPage = () => {
         <div className="flex bg-gray-900 border border-gray-800 rounded-xl p-1 mb-6">
           {["login", "signup"].map((tab) => (
             <button
-              key={tab}
+              key={tab}   
               onClick={() => switchMode(tab)}
               className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all duration-200 capitalize cursor-pointer
                 ${mode === tab
