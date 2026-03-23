@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 app.use(cors({
      origin: [
         "http://localhost:5173",
-        "https://preppulseaiweb.vercel.app"
+        "https://preppulse-backend-c91q.onrender.com"
     ],
   credentials: true,
 }))
