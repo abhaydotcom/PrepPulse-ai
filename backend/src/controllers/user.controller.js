@@ -36,7 +36,11 @@ export async function signUp(req,res){
         {expiresIn:"1d"}
 
     )
-     res.cookie("token",token)
+     res.cookie("token",token,{
+         httpOnly: true,
+        secure: true,
+        sameSite: "None",
+     })
     await user.save()
    }
     
@@ -78,7 +82,11 @@ export async function login(req,res){
             {expiresIn:"1day"}
         )
 
-        res.cookie("token",token)
+        res.cookie("token",token,{
+             httpOnly: true,
+            secure: true,
+            sameSite: "None",
+        })
         res.status(200).json({
             message:"Login successful",
               success:true,
