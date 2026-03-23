@@ -194,7 +194,7 @@ const Home = () => {
             </div>
 
             <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-              {reports.length > 0 ? (
+              {reports?.length > 0 ? (
                 reports.map(report => (
                   <div
                     key={report?._id}
